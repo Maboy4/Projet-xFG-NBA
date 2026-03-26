@@ -1,0 +1,11 @@
+# Environnements virtuels
+venv/
+env/
+
+# Fichiers de données (Trop lourds pour GitHub)
+*.csv
+*.xlsx
+__pycache__/
+
+# Fichiers système
+.DS_Store
