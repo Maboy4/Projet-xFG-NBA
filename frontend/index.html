@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>xFG — NBA Shot Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Sidebar gauche ──────────────────────────────────────────────────── -->
+    <aside id="sidebar">
+      <div id="logo">xFG<span class="dot">.</span></div>
+      <p class="subtitle">NBA Shot Quality Analyzer</p>
+
+      <!-- Recherche -->
+      <div id="search-container">
+        <label for="player-search">Rechercher un joueur</label>
+        <input type="text" id="player-search" placeholder="Curry, Jokic, James…" autocomplete="off" />
+        <ul id="autocomplete-list" class="hidden"></ul>
+      </div>
+
+      <!-- Carte stats joueur (compacte) -->
+      <div id="player-stats" class="hidden">
+        <p id="stat-name" class="player-name"></p>
+        <div class="stats-grid">
+          <div class="stat"><span class="stat-label">FGM</span><span class="stat-value" id="stat-fgm">—</span></div>
+          <div class="stat"><span class="stat-label">FGA</span><span class="stat-value" id="stat-fga">—</span></div>
+          <div class="stat"><span class="stat-label">FG%</span><span class="stat-value" id="stat-fg">—</span></div>
+          <div class="stat"><span class="stat-label">xFG%</span><span class="stat-value" id="stat-xfg">—</span></div>
+        </div>
+        <div class="poe-block">
+          <span class="stat-label">POE</span>
+          <span class="stat-value poe-value" id="stat-poe">—</span>
+        </div>
+      </div>
+
+      <!-- Leaderboard -->
+      <div id="leaderboard-section">
+        <div class="lb-header">
+          <span class="lb-title">Classement</span>
+          <div class="sort-btns">
+            <button id="sort-desc" class="sort-btn active" title="Meilleurs en premier">↓ POE</button>
+            <button id="sort-asc"  class="sort-btn"        title="Pires en premier">↑ POE</button>
+          </div>
+        </div>
+        <div id="leaderboard-list"></div>
+      </div>
+    </aside>
+
+    <!-- ── Panneau droit : hero + terrain ──────────────────────────────────── -->
+    <div id="right-panel">
+
+      <!-- Hero joueur au-dessus du terrain -->
+      <div id="player-hero" class="hidden">
+        <span id="hero-name">—</span>
+        <div class="hero-pills">
+          <span class="pill" id="hero-poe">POE —</span>
+          <span class="pill pill-muted" id="hero-fg">FG% —</span>
+          <span class="pill pill-muted" id="hero-xfg">xFG% —</span>
+          <span class="pill pill-muted" id="hero-fga">— tirs</span>
+        </div>
+      </div>
+      <p id="court-hint">Recherche un joueur pour afficher son shot chart</p>
+
+      <!-- Terrain SVG -->
+      <div id="court-container">
+        <svg id="court" viewBox="0 0 500 470" preserveAspectRatio="xMidYMid meet">
+          <!-- Dessiné par court.js -->
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
